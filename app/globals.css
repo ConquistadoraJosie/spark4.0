@@ -14,93 +14,164 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'Syncopate', sans-serif;
+  min-height: 100vh;
+
 }
 
-
-/* Basic styles for the navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #f0f0f0;
-  /* Green background */
-  color: black;
-}
-
-/* Logo styling */
-.logo a {
-  color: #0d5d7f;
+.logo {
   font-family: 'Gugi', cursive;
-  text-decoration: none;
-  font-size: 36px;
+  color: #187285;
+  font-size: 42px;
+  display: inline;
 }
 
-/* Navigation links styling */
-.nav-links {
-  display: flex;
-  list-style: none;
+a {
+  color: #000;
 }
 
-.nav-links li {
-  margin: 0 15px;
-}
+/* header */
 
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
-  transition: color 0.3s, text-decoration 0.3s, background-color 0.3s;
-  padding: 5px 10px;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: #e0e0e0;
-  /* Lighter color for active/hover */
-  background-color: #656968;
-  /* Darker green background on hover */
-  border-radius: 4px;
-  /* Optional: rounded corners */
-}
-
-/* Menu toggle button for mobile view */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.menu-toggle .bar {
+.header {
   background-color: #f0f0f0;
-  height: 3px;
-  width: 25px;
-  margin: 5px;
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .1);
+  position: fixed;
+  width: 100%;
+  z-index: 3;
 }
 
-/* Responsive styling */
-@media (max-width: 768px) {
-  .nav-links {
+.header ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f0f0f0;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: #9ae3eb;
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked~.menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked~.menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked~.menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked~.menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked~.menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked~.menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+
+  .header li a {
+    padding: 20px 30px;
+  }
+
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+
+  .header .menu-icon {
     display: none;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: #a3a9aa;
-    /* Green background for mobile view */
   }
+}
 
-  .nav-links.active {
-    display: flex;
-  }
+/* container */
+.two-columns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
-  .nav-links li {
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  .menu-toggle {
-    display: flex;
-  }
+/* columns */
+.two-columns-grid>* {
+  padding: 1rem;
 }

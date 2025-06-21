@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
+import Hamburger from "./components/hamburger";
 import "./globals.css";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "SPARK: Reigniting Learning and Innovation",
@@ -14,21 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+
     <html lang="en">
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="main.css" />
-      </head>
       <body>
-        <nav className="navbar">
-          <div className="logo">
-            <Link href="/">SPARK</Link>
-          </div>
-          <ul className="nav-links">
-            <li><a href="/sessions">Events & Sessions</a></li>
-          </ul>
-        </nav>
+        <Hamburger />
         {children}
       </body>
     </html>
