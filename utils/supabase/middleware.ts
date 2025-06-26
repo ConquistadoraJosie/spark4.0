@@ -40,6 +40,7 @@ export async function updateSession(request: NextRequest) {
     // includes because we know these routes exist
     if ( // These routes are public and do not require login
         !user &&
+        !request.nextUrl.pathname.includes('/dashboard') &&
         !request.nextUrl.pathname.includes('/login') &&
         !request.nextUrl.pathname.includes('/register') &&
         !request.nextUrl.pathname.includes('/forgot-password') &&
@@ -48,7 +49,7 @@ export async function updateSession(request: NextRequest) {
     ) {
         // no user, potentially respond by redirecting the user to the login page
         const url = request.nextUrl.clone()
-        url.pathname = '/login'
+        url.pathname = '/dashboard'
         return NextResponse.redirect(url)
     }
 
