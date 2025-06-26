@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function Nav() {
 
     return (
-        <header className="header" aria-controls='menu'>
+        <header className="header float-left" aria-controls='menu'>
             <Link href="/" className="logo">SPARK</Link>
             <input className="menu-btn" type="checkbox" id="menu-btn" />
             <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
@@ -13,6 +13,8 @@ export default function Nav() {
                 <li><a href="https://www.rva.gov/parks-recreation/powhatan-community-center">Contact</a></li>
                 <li><a href="#team">Our Team</a></li>
                 <li><a href="/sessions">Events & Upcoming Sessions</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Sign Up</a></li>
             </ul>
         </header>
     );

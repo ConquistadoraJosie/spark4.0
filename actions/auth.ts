@@ -72,3 +72,17 @@ export async function signIn(formData: FormData) {
     revalidatePath("/", "layout");
     return { status: "success", user: data.user };
 }
+
+// Log out function for the user to log out of their account
+//Logout function for the user to log out of their account
+export async function signOut() {
+    const Supabase = await createClient();
+    const { error } = await Supabase.auth.signOut();
+
+    if (error) {
+        redirect("/error"); // if there is an error, redirect to the error page
+    }
+
+    revalidatePath("/", "layout");
+    redirect("/dashboard");
+}
